@@ -1,0 +1,88 @@
+/* @import '../../assets/css/form.css'; */
+mat-label {
+    font-size: 20px;
+}
+
+input { 
+    font-size: 25px;
+}
+
+.mat-row .mat-cell {
+    border-bottom: 1px solid #e8ecf1;
+    border-top: 1px solid #e8ecf1;
+    cursor: pointer;
+    font-size: 18px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.mat-header-cell {
+    font-size: 30px;
+    background-color: #8183f7;
+    color: white;
+    font-family: Consolas, Arial, SansSerif, serif;
+    font-weight: bold;
+}
+
+.mat-row:hover .mat-cell {
+    border-color: black;
+}
+
+.clicked-row {
+    background-color: #e8ecf1;
+}
+
+.product-table {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 2%;
+    margin-top: 10px;
+}
+
+.part-dropdown {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: flex-end;
+}
+
+.part-selector {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+
+th.mat-header-cell:first-of-type {
+    padding-left: 15px;
+}
+
+th.mat-header-cell:last-of-type {
+    padding-right: 0px;
+}
+
+.product-table-form {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.mat-table-product-list {
+    width: 100%;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.button {
+    padding: 10px 30px;
+    font-size: 18px;
+    background-color: #8183f7;
+    color: white;
+}

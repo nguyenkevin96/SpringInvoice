@@ -1,0 +1,35 @@
+<ng-container [formGroup]="form">
+    <div class="form-header">
+        VEHICLE
+    </div>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Received Date</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="receivedDate">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1 color="primary" formGroupName="receivedDate"></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Year, Make, Model</mat-label>
+        <input matInput type="text" formControlName="year_make_model">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Vin #</mat-label>
+        <input matInput type="text" formControlName="vinNumber" required>
+        <mat-error *ngIf="form.get('vinNumber')?.hasError('required')" class="input-invalid">
+            Vin # is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>License No</mat-label>
+        <input matInput type="text" formControlName="licenseNo">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Odometer</mat-label>
+        <input matInput type="text" formControlName="odometer">
+    </mat-form-field>
+</ng-container>

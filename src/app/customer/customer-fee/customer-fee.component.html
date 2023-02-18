@@ -1,0 +1,42 @@
+<ng-container [formGroup]="form">
+    <div>
+    <div class="form-header">
+        FEES
+    </div>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Labor</mat-label>
+        <input matInput type="text" currencyInput formControlName="labor" (blur)="emitSumChange()">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Parts</mat-label>
+        <input matInput type="text" currencyInput formControlName="parts" (blur)="emitSumChange()">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Accessories</mat-label>
+        <input matInput type="text" currencyInput formControlName="accessories" (blur)="emitSumChange()">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Gas, Oil, Grease</mat-label>
+        <input matInput type="text" currencyInput formControlName="gas_oil_grease" (blur)="emitSumChange()">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Misc. Merchandise</mat-label>
+        <input matInput type="text" currencyInput formControlName="misc_merchandise" (blur)="emitSumChange()">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Tow</mat-label>
+        <input matInput type="text" currencyInput formControlName="tow" (blur)="emitSumChange()">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Tax</mat-label>
+        <input matInput type="text" currencyInput formControlName="tax" (blur)="emitSumChange()">
+    </mat-form-field>
+</div>
+</ng-container>
