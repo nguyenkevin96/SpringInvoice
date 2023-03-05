@@ -1,0 +1,55 @@
+html, body {
+    height: 100%;
+    font-size: 18px;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-label {
+    font-size: 20px;
+}
+
+input {
+    font-size: 25px;
+}
+
+.form-component {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 20px;
+    width: 50%;
+}
+
+.form-header {
+    background-color: #8183f7;
+    font-size: 30px !important;
+    font-weight: bold;
+    color: white;
+    padding: 15px;
+    letter-spacing: 2px !important;
+    margin-bottom: 10px;
+    font-family: Consolas, Arial, SansSerif, serif;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.city-state-zip-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

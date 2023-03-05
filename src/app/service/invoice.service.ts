@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Part} from "../customer/customer-parts/customer-parts.component";
+import {Part} from "../customer/customer-invoice/customer-parts/customer-parts.component";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class InvoiceService {
 
+    baseUrl = environment.baseUrl;
+
     constructor(private http: HttpClient) {
 
     }
 
-    addNewPart(newPart: Part) {
-        let requestUrl = "http://localhost:8080/part"
-        const headers = new HttpHeaders()
-            .set('Content-Type', 'application/json')
-
-        this.http.post(requestUrl, newPart, {'headers': headers}).subscribe(data => {
-                console.log(`${newPart.name} successfully added`)
-            }
-        )
+    submitForm() {
+        this.http.get(this.baseUrl + '/api/v1/greetings')
+            .subscribe(
+                data => console.log(data),
+                error => console.log("Error", error)
+            )
     }
 }
