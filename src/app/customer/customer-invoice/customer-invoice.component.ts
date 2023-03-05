@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {Subject} from "rxjs";
 import {CustomerPartsComponent} from "./customer-parts/customer-parts.component";
 import {InvoiceService} from "../../service/invoice.service";
@@ -17,10 +17,10 @@ let formatter = new Intl.NumberFormat('en-US', {
 })
 export class CustomerInvoiceComponent implements OnInit {
 
-    customerForm: FormGroup;
+    customerForm: UntypedFormGroup;
     selectedPart: any;
     button: string;
-    list: FormArray = this.fb.array([])
+    list: UntypedFormArray = this.fb.array([])
     resetForm: Subject<any> = new Subject();
 
     productPartsTotal: any = 0;
@@ -28,7 +28,7 @@ export class CustomerInvoiceComponent implements OnInit {
 
     @ViewChild(CustomerPartsComponent) private customerPartsComponent: CustomerPartsComponent
 
-    constructor(private fb: FormBuilder, private invoiceService: InvoiceService) {
+    constructor(private fb: UntypedFormBuilder, private invoiceService: InvoiceService) {
         this.customerForm = this.fb.group({
             customerInfo: this.fb.group({
                 name: [''],
@@ -40,7 +40,7 @@ export class CustomerInvoiceComponent implements OnInit {
                 email: [''],
             }),
             customerVehicleInfo: this.fb.group({
-                receivedDate: new FormControl(''),
+                receivedDate: new UntypedFormControl(''),
                 year_make_model: [''],
                 vinNumber: [''],
                 licenseNo: [''],

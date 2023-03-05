@@ -1,5 +1,5 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
-import { FormControl, FormGroup, FormGroupDirective } from '@angular/forms';
+import { FormControl, UntypedFormGroup, FormGroupDirective } from '@angular/forms';
 import { ProductArithType } from 'src/app/shared/ProductArithType';
 
 @Component({
@@ -9,7 +9,7 @@ import { ProductArithType } from 'src/app/shared/ProductArithType';
 })
 export class CustomerFeeComponent implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   @Input() formGroupName: string;
 
   @Output() sumChange = new EventEmitter<any>();
@@ -17,7 +17,7 @@ export class CustomerFeeComponent implements OnInit {
   constructor(private rootFormDirective: FormGroupDirective) { }
 
   ngOnInit(): void {
-    this.form = this.rootFormDirective.control.get(this.formGroupName) as FormGroup;
+    this.form = this.rootFormDirective.control.get(this.formGroupName) as UntypedFormGroup;
   }
 
   emitSumChange() {

@@ -1,7 +1,7 @@
 import { CurrencyPipe } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { FormArray, UntypedFormBuilder, UntypedFormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
@@ -22,7 +22,7 @@ export interface Part {
 })
 export class CustomerPartsComponent implements OnInit {
 
-  partsForm: FormGroup;
+  partsForm: UntypedFormGroup;
   @Input() formGroupName: string;
   @Input() formArrayName: string;
 
@@ -48,7 +48,7 @@ export class CustomerPartsComponent implements OnInit {
     isPriceValid: true
   }
 
-  constructor(public dialog: MatDialog, private fb: FormBuilder, private http: HttpClient, private currencyPipe: CurrencyPipe) {
+  constructor(public dialog: MatDialog, private fb: UntypedFormBuilder, private http: HttpClient, private currencyPipe: CurrencyPipe) {
     this.partsForm = this.fb.group({
       product_name: ['', [Validators.required]],
       product_quantity: ['', [Validators.required]],
