@@ -11,7 +11,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import { CustomerFeeComponent } from './customer/customer-invoice/customer-fee/customer-fee.component';
 import {MatInputModule} from "@angular/material/input";
-import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatCheckboxModule} from "@angular/material/checkbox";
@@ -55,7 +54,6 @@ import { CustomerInvoiceComponent } from './customer/customer-invoice/customer-i
         MatButtonModule,
         MatDividerModule,
         MatInputModule,
-        MatDatepickerModule,
         MatFormFieldModule,
         MatNativeDateModule,
         MatCheckboxModule,

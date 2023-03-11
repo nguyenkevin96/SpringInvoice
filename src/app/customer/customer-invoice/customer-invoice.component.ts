@@ -3,7 +3,6 @@ import {UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGro
 import {Subject} from "rxjs";
 import {CustomerPartsComponent} from "./customer-parts/customer-parts.component";
 import {InvoiceService} from "../../service/invoice.service";
-import {MatDatepickerInputEvent} from "@angular/material/datepicker";
 
 let formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -40,7 +39,7 @@ export class CustomerInvoiceComponent implements OnInit {
                 email: [''],
             }),
             customerVehicleInfo: this.fb.group({
-                receivedDate: new UntypedFormControl(''),
+                receivedDate: [''],
                 year_make_model: [''],
                 vinNumber: [''],
                 licenseNo: [''],
@@ -70,10 +69,6 @@ export class CustomerInvoiceComponent implements OnInit {
         this.customerForm.reset();
         this.customerPartsComponent.customerParts = [];
         this.resetForm.next();
-    }
-
-    toggleDatePicker($event: MatDatepickerInputEvent<any | null>) {
-        this.customerForm.get('receivedDate')?.setValue($event.value)
     }
 
     addToSum(productTotal: any) {

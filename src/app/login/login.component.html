@@ -1,5 +1,23 @@
+<div class="main-container">
+    <div class="login-container">
+        <div class="login-header">
+            Login
+        </div>
+        <div class="login-sub-container">
+            <div class="login-form">
+                <mat-form-field appearance="fill">
+                    <mat-label>Username</mat-label>
+                    <input matInput type="text">
+                </mat-form-field>
 
-<div class="container">
-    <p>login works!</p>
-    <button (click)="navigateToCustomer()">Click here to go to Customer</button>
+                <mat-form-field appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="text">
+                </mat-form-field>
+            </div>
+            <div class="login-button">
+                <button mat-raised-button (click)="navigateToCustomer()">Login</button>
+            </div>
+        </div>
+    </div>
 </div>

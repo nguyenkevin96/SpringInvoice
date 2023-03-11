@@ -1,8 +1,62 @@
-.container {
+* {
+    font-size: 25px;
+}
+
+.main-container {
     display: flex;
-    background-color: yellow;
     align-items: center;
     justify-content: center;
     height: 100%;
     width: 100%;
+    background-color: #ffffff;
+}
+
+.login-container {
+    padding-top: 100px;
+    box-shadow: 5px 5px 10px gray;
+}
+
+.login-sub-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    background-color: #ffffff;
+    padding: 50px 50px 100px 50px;
+}
+
+.login-header {
+    border-left: 10px solid #8183f7;
+    padding-left: 40px;
+    font-weight: bold;
+}
+
+.login-header {
+    display: flex;
+    font-size: 50px;
+    height: 60px;
+    margin: 0;
+    align-items: center;
+}
+
+.login-form {
+    height: 60%;
+}
+
+.login-button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 20%;
+}
+
+input {
+    width: 100%;
+}
+
+button {
+    background-color: #8183f7;
+    color: #ffffff;
+    font-size: 25px;
+    padding: 15px 0;
+    width: 70%;
 }
