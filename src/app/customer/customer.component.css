@@ -19,7 +19,6 @@ li {
     list-style-type: none;
 }
 
-
 .spacer {
     flex: 1;
 }
@@ -28,6 +27,7 @@ li {
     font-weight: bold;
     font-size: 20px;
     color: white;
+    height: 50px;
 }
 
 .container {

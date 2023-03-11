@@ -12,13 +12,11 @@ export class HttpInterceptorService implements HttpInterceptor{
         //TODO Grab Token dynamically somewhere
         const headers = req.headers
             .set('Content-Type', 'application/json')
-            .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZXZpbkBlbWFpbC5jb20iLCJpYXQiOjE2NzgwNDE1NjQsImV4cCI6MTY3ODA0MzAwNH0._6R1aOtWUB3yQx8v6F98QWTA_b8txoTQhvaV8sJBClg')
+            .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZXZpbkBlbWFpbC5jb20iLCJpYXQiOjE2Nzg1NTYyODEsImV4cCI6MTY3ODU1NzcyMX0.fpcT1a9JE8Y_QkOC_tJac-CMLbMSchUO8UJXNOrjWp4')
 
         const newRequest = req.clone({headers})
         return next.handle(newRequest);
     }
-
-
 
   constructor() { }
 }
