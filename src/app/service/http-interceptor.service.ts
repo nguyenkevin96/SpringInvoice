@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from "@angular/common/http";
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -9,10 +9,14 @@ export class HttpInterceptorService implements HttpInterceptor{
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
+        if (req.url.includes('/login')) {
+            return next.handle(req);
+        }
+
         //TODO Grab Token dynamically somewhere
         const headers = req.headers
             .set('Content-Type', 'application/json')
-            .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrZXZpbkBlbWFpbC5jb20iLCJpYXQiOjE2Nzg1NTYyODEsImV4cCI6MTY3ODU1NzcyMX0.fpcT1a9JE8Y_QkOC_tJac-CMLbMSchUO8UJXNOrjWp4')
+            .set('Authorization', localStorage.getItem('accessToken') ?? '')
 
         const newRequest = req.clone({headers})
         return next.handle(newRequest);
