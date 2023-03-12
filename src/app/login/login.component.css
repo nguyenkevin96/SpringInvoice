@@ -2,6 +2,14 @@
     font-size: 25px;
 }
 
+.mat-form-field-wrapper {
+    padding-bottom: 0;
+}
+
+#username-container {
+    padding-bottom: 30px;
+}
+
 .main-container {
     display: flex;
     align-items: center;
@@ -14,6 +22,7 @@
 .login-container {
     padding-top: 100px;
     box-shadow: 5px 5px 10px gray;
+    width: 500px;
 }
 
 .login-sub-container {
@@ -25,18 +34,20 @@
 }
 
 .login-header {
-    border-left: 10px solid #8183f7;
-    padding-left: 40px;
-    font-weight: bold;
-}
-
-.login-header {
     display: flex;
     font-size: 50px;
     height: 60px;
     margin: 0;
     align-items: center;
+    border-left: 10px solid #8183f7;
+    padding-left: 40px;
+    font-weight: bold;
 }
+
+.invalid-prompt {
+    padding: 20px 0 0 50px;
+}
+
 
 .login-form {
     height: 60%;
