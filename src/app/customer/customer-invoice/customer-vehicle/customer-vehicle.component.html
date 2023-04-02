@@ -15,7 +15,7 @@
 
     <mat-form-field appearance="fill">
         <mat-label>Vin #</mat-label>
-        <input matInput type="text" formControlName="vinNumber" required>
+        <input matInput type="text" formControlName="vinNumber">
         <mat-error *ngIf="form.get('vinNumber')?.hasError('required')" class="input-invalid">
             Vin # is <strong>required</strong>
         </mat-error>

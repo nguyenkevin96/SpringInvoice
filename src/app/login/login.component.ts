@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     responseData: any;
     invalidPrompt: string;
+    loading: boolean = false;
+    error: boolean = false;
 
     constructor(private router: Router, private invoiceService: InvoiceService,
               private fb: FormBuilder) { }
@@ -24,19 +26,29 @@ export class LoginComponent implements OnInit {
         })
     }
 
-    onLogin() {
+    async onLogin() {
         console.log("Submitting Form...")
+        this.error = false;
+        this.loading = true;
+
         const data = {
             email: this.username?.value,
             password: this.password?.value
         }
 
-        this.invoiceService.checkLogin(data).subscribe((response) => {
-            if(response.status === 'success'){
-                localStorage.setItem('accessToken', 'Bearer ' + response.token);
-                this.router.navigate(['/customer/home']);
-            }
-        })
+        try{
+            await this.invoiceService.checkLogin(data).then(response => {
+                console.log(response.message)
+                if(response.message === 'success') {
+                    localStorage.setItem('accessToken', 'Bearer ' + response.token);
+                    this.router.navigate(['/customer/home']);
+                }
+            });
+        } catch (error) {
+            this.error = true;
+        }
+
+        this.loading = false;
     }
 
     get username() {

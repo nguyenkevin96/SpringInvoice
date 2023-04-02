@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {UntypedFormArray, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
+import {UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {Subject} from "rxjs";
 import {CustomerPartsComponent} from "./customer-parts/customer-parts.component";
 import {InvoiceService} from "../../service/invoice.service";
@@ -41,7 +41,7 @@ export class CustomerInvoiceComponent implements OnInit {
             customerVehicleInfo: this.fb.group({
                 receivedDate: [''],
                 year_make_model: [''],
-                vinNumber: [''],
+                vinNumber: ['', [Validators.required]],
                 licenseNo: [''],
                 odometer: [''],
             }),

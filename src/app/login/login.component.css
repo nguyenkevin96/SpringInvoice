@@ -60,6 +60,10 @@
     height: 20%;
 }
 
+.invalid-login-body {
+    padding-bottom: 20px;
+}
+
 input {
     width: 100%;
 }
