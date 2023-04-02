@@ -29,6 +29,7 @@ import { LoginComponent } from './login/login.component';
 import { CustomerHomeComponent } from './customer/customer-home/customer-home.component';
 import { CustomerHistoryComponent } from './customer/customer-history/customer-history.component';
 import { CustomerInvoiceComponent } from './customer/customer-invoice/customer-invoice.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { CustomerInvoiceComponent } from './customer/customer-invoice/customer-i
         MatSelectModule,
         MatDialogModule,
         HttpClientModule,
-        MatAutocompleteModule
+        MatAutocompleteModule,
+        MatProgressSpinnerModule
     ],
   providers: [
       CurrencyPipe,
