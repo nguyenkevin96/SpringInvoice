@@ -2,7 +2,6 @@ import { CurrencyPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { Subject } from 'rxjs';
 import { ProductArithType } from 'src/app/shared/ProductArithType';
@@ -45,7 +44,7 @@ export class CustomerPartsComponent implements OnInit {
     isPriceValid: true
   }
 
-  constructor(public dialog: MatDialog, private fb: UntypedFormBuilder, private http: HttpClient, private currencyPipe: CurrencyPipe) {
+  constructor(private fb: UntypedFormBuilder, private http: HttpClient, private currencyPipe: CurrencyPipe) {
     this.partsForm = this.fb.group({
       product_name: ['', [Validators.required]],
       product_quantity: ['', [Validators.required]],
