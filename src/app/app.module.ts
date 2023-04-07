@@ -22,7 +22,7 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import { CustomerPartsComponent } from './customer/customer-invoice/customer-parts/customer-parts.component';
 import { CustomerInfoComponent } from './customer/customer-invoice/customer-info/customer-info.component';
 import { CustomerVehicleComponent } from './customer/customer-invoice/customer-vehicle/customer-vehicle.component';
-import { CurrencyDirective } from './currency.directive';
+import { CurrencyDirective } from './shared/currency.directive';
 import { CurrencyPipe } from "@angular/common"
 import {HttpInterceptorService} from "./service/http-interceptor.service";
 import { LoginComponent } from './login/login.component';

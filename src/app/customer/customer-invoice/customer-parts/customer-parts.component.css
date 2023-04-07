@@ -3,7 +3,7 @@ mat-label {
     font-size: 20px;
 }
 
-input { 
+input {
     font-size: 25px;
 }
 
@@ -85,4 +85,11 @@ th.mat-header-cell:last-of-type {
     font-size: 18px;
     background-color: #8183f7;
     color: white;
+}
+
+.product-table-footer-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
 }

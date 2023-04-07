@@ -1,12 +1,10 @@
 import { CurrencyPipe } from '@angular/common';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
-import { FormArray, UntypedFormBuilder, UntypedFormGroup, FormGroupDirective, Validators } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
-import { Observable, Subject } from 'rxjs';
-import { map } from 'rxjs/operators'
+import { Subject } from 'rxjs';
 import { ProductArithType } from 'src/app/shared/ProductArithType';
 
 export interface Part {
@@ -37,10 +35,9 @@ export class CustomerPartsComponent implements OnInit {
   dataSourceCustomerParts = [...this.customerParts]
   columnNames: string[] = ['Name', 'Qty', 'Price']
   clickedProduct: any;
+  productError: boolean = false;
 
   total: number = 0;
-
-  isRemove: Boolean = false;
 
   validForm = {
     isNameValid: true,
@@ -56,7 +53,7 @@ export class CustomerPartsComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.resetForm.subscribe(e => {
       this.clearCustomerPartsList();
     })
@@ -69,12 +66,21 @@ export class CustomerPartsComponent implements OnInit {
         quantity: this.partsForm.get('product_quantity')?.value,
         price: this.partsForm.get('product_price')?.value,
       };
-      this.customerParts.push(newPart)
-      this.dataSourceCustomerParts = [...this.customerParts]
 
-      this.emitSumChange(ProductArithType.ADD, this.parseStringToNumCurrency(newPart.price));
-      this.resetValidForm();
-      this.clearProductForm();
+      const found = this.customerParts.find(x => x.name.toLowerCase() === newPart.name.toLowerCase());
+
+      if(!found){
+          this.customerParts.push(newPart)
+          this.dataSourceCustomerParts = [...this.customerParts]
+
+          this.emitSumChange(ProductArithType.ADD, this.parseStringToNumCurrency(newPart.price), newPart);
+          this.resetValidForm();
+          this.clearProductForm();
+          this.productError = false;
+      } else {
+          this.productError = true;
+      }
+
     } else {
       if(this.partsForm.get('product_name')?.errors){
         this.validForm.isNameValid = false;
@@ -93,7 +99,7 @@ export class CustomerPartsComponent implements OnInit {
     this.dataSourceCustomerParts = this.dataSourceCustomerParts.filter((product) => product.name !== this.clickedProduct.name)
     this.customerParts = this.customerParts.filter((product) => product.name !== this.clickedProduct.name)
 
-    this.emitSumChange(ProductArithType.REMOVE, this.parseStringToNumCurrency(this.clickedProduct.price))
+    this.emitSumChange(ProductArithType.REMOVE, this.parseStringToNumCurrency(this.clickedProduct.price), this.clickedProduct)
     this.clickedProduct = null;
   }
 
@@ -122,7 +128,7 @@ export class CustomerPartsComponent implements OnInit {
     this.partsForm.get('product_price')?.setValue(parsedInput, {emitEvent: false});
   }
 
-  emitSumChange(type: ProductArithType, value: number) {
+  emitSumChange(type: ProductArithType, value: number, part: any) {
 
     if(type === ProductArithType.ADD){
       this.total += value;
@@ -130,7 +136,13 @@ export class CustomerPartsComponent implements OnInit {
       this.total -= value;
     }
 
-    this.sumChange.emit(this.total);
+    const data = {
+        part: part,
+        total: this.total,
+        type: type
+    }
+
+    this.sumChange.emit(data);
   }
 
   setClickedPart(part: Part){

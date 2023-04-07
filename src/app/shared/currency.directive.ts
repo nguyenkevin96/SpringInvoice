@@ -1,5 +1,5 @@
 import { CurrencyPipe } from '@angular/common';
-import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 @Directive({
   selector: '[currencyInput]'
@@ -16,17 +16,21 @@ export class CurrencyDirective {
 
   @HostListener('focus', ['$event.target.value'])
   onFocus(value: string) {
-    if(typeof value === 'string')
-    this.el.value = value.replace(/[^0-9.]+/g, '');
-    
-    this.el.select();
+      this.el.value = value.replace(/[^0-9.]+/g, '');
+      if(!value){
+          this.el.value = '0';
+      }
+      this.el.select();
   }
 
   @HostListener('blur', ['$event.target.value'])
   onBlur(value: string) {
-    if(typeof value === 'string')
       value = value.replace(/[^0-9.]+/g, '');
 
-    this.el.value = this.currencyPipe.transform(value, 'USD')!;
+      if(!value){
+          value = '0';
+      }
+
+      this.el.value = this.currencyPipe.transform(value, 'USD')!;
   }
 }

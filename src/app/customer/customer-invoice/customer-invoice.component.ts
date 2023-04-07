@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
+import {FormArray, UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {Subject} from "rxjs";
 import {CustomerPartsComponent} from "./customer-parts/customer-parts.component";
 import {InvoiceService} from "../../service/invoice.service";
@@ -19,7 +19,6 @@ export class CustomerInvoiceComponent implements OnInit {
     customerForm: UntypedFormGroup;
     selectedPart: any;
     button: string;
-    list: UntypedFormArray = this.fb.array([])
     resetForm: Subject<any> = new Subject();
 
     productPartsTotal: any = 0;
@@ -54,6 +53,7 @@ export class CustomerInvoiceComponent implements OnInit {
                 tow: [formatter.format(0)],
                 tax: [formatter.format(0)],
             }),
+            carParts: this.fb.array([]),
             total: ['0']
         });
     }
@@ -71,12 +71,31 @@ export class CustomerInvoiceComponent implements OnInit {
         this.resetForm.next();
     }
 
-    addToSum(productTotal: any) {
-        this.productPartsTotal = productTotal;
+    addToSum(item: any) {
+        const part = this.fb.group({
+            name: item.part.name,
+            price: item.part.price,
+            quantity: item.part.quantity
+        });
+
+        if(item.type === 'ADD') {
+            this.carPartsList.push(part);
+        } else if (item.type === 'REMOVE') {
+            const index = this.carPartsList.controls.findIndex(x => x.value.name.toLowerCase() === item.part.name.toLowerCase());
+            if (index >= 0) {
+                this.carPartsList.removeAt(index);
+            }
+        }
+
+        this.productPartsTotal = item.total;
     }
 
     addToCustomerFee(feeTotal: any) {
         this.customerFeeTotal = feeTotal;
+    }
+
+    get carPartsList(): FormArray {
+        return this.customerForm.get('carParts') as FormArray;
     }
 
     get currDate() {
