@@ -10,6 +10,19 @@
     padding-bottom: 30px;
 }
 
+#mat-form-field-username {
+    width: 100%;
+}
+
+#mat-form-field-password {
+    width: 100%;
+}
+
+#submit-button {
+    background-color: #8183f7;
+    height: 60px;
+}
+
 .main-container {
     display: flex;
     align-items: center;
@@ -61,7 +74,7 @@
 }
 
 .invalid-login-body {
-    padding-bottom: 20px;
+    padding-bottom: 30px;
 }
 
 input {
