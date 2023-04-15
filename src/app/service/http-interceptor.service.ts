@@ -14,7 +14,7 @@ export class HttpInterceptorService implements HttpInterceptor{
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        if (req.url.includes('/login')) {
+        if (req.url.includes('/login') || req.url.includes('/authenticate')) {
             return next.handle(req);
         }
 

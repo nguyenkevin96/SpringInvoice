@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {InvoiceService} from "../service/invoice.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -27,7 +26,6 @@ export class LoginComponent implements OnInit {
     }
 
     async onLogin() {
-        console.log("Submitting Form...")
         this.error = false;
         this.loading = true;
 
@@ -38,7 +36,6 @@ export class LoginComponent implements OnInit {
 
         try{
             await this.invoiceService.checkLogin(data).then(response => {
-                console.log(response.message)
                 if(response.message === 'success') {
                     localStorage.setItem('accessToken', 'Bearer ' + response.token);
                     this.router.navigate(['/customer/home']);

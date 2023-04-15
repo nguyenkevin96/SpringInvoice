@@ -3,39 +3,38 @@
         <div class="login-header">
             Login
         </div>
-        <div *ngIf="invalidPrompt" class="mat-error invalid-prompt">
-            {{invalidPrompt}}
-        </div>
         <div class="login-sub-container">
             <div [formGroup]="loginForm" class="login-form">
-                <div *ngIf="error" class="mat-error invalid-login-body">
-                    Invalid username/password
+                <div class="invalid-login-body">
+                    <mat-error *ngIf="error">
+                        Invalid username/password
+                    </mat-error>
                 </div>
                 <div id="username-container">
-                    <mat-form-field appearance="fill">
+                    <mat-form-field id="mat-form-field-username" appearance="fill">
                         <mat-label>Username/Email</mat-label>
                         <input id="username" matInput type="text" formControlName="username">
                     </mat-form-field>
-                    <div *ngIf="username?.hasError('required') && username?.touched" class="mat-error">
+                    <mat-error *ngIf="username?.hasError('required') && username?.touched">
                         Username/Email is required
-                    </div>
+                    </mat-error>
                 </div>
 
                 <div id="password-container">
-                    <mat-form-field appearance="fill">
+                    <mat-form-field id="mat-form-field-password" appearance="fill">
                         <mat-label>Password</mat-label>
                         <input id="password" matInput type="password" formControlName="password">
                     </mat-form-field>
-                    <div *ngIf="password?.hasError('required') && password?.touched" class="mat-error">
+                    <mat-error *ngIf="password?.hasError('required') && password?.touched">
                         Password is required
-                    </div>
+                    </mat-error>
                 </div>
             </div>
             <div *ngIf="loading" class="login-button">
                 <mat-spinner></mat-spinner>
             </div>
             <div *ngIf="!loading" class="login-button">
-                <button [disabled]="loginForm.invalid" mat-raised-button type="submit" (click)="onLogin()">Login</button>
+                <button id="submit-button" [disabled]="loginForm.invalid" mat-raised-button type="submit" (click)="onLogin()">Login</button>
             </div>
         </div>
     </div>
